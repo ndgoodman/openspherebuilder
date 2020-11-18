@@ -1,8 +1,13 @@
 # openspherebuilder
 build opensphere client
 
-# Build docker image
-docker build .
+## How to use this image
 
-# Run the docker image
-docker run imageid -v $pwd:/web-content
+### Build docker container
+
+You can then build and run the openspherebuilder:
+
+```console
+$ docker build -t openspherebuilder .
+$ docker run openspherebuilder -v $pwd:/web-content
+```
