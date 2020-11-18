@@ -20,4 +20,4 @@ yarn build
 
 # Move Opensphere to web-content
 echo "Move Opensphere to web-content"
-mv cd /workspace/opensphere-yarn-workspace/workspace/opensphere/dist/openshere /web-content/opensphere
+mv cd /workspace/opensphere-yarn-workspace/workspace/opensphere/dist/openshere /web-content/
