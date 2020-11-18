@@ -15,6 +15,8 @@ RUN cd /workspace/opensphere-yarn-workspace/ \
 RUN wget https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz \
   && tar -xzf  openjdk-11+28_linux-x64_bin.tar.gz -C /opt/
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jdk-11/bin
 
-CMD [ "node" ]
+COPY docker-entrypoint.sh /usr/local/bin/
+
+CMD /usr/local/bin/docker-entrypoint.sh
