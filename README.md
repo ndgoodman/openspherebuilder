@@ -9,5 +9,5 @@ You can then build and run the openspherebuilder:
 
 ```console
 $ docker build -t openspherebuilder .
-$ docker run openspherebuilder -v $pwd:/web-content
+$ docker run -v $pwd:/web-content openspherebuilder
 ```
