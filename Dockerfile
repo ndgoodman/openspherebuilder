@@ -1,8 +1,9 @@
-FROM node:14.15.1-buster
+FROM node:lts
 
-ENV NODE_VERSION 14.15.1
-ENV YARN_VERSION 1.22.5
-ENV JAVA_VERSION openjdk11
+# Install Java 8 JRE
+RUN apt-get -y update && apt-get -y install openjdk-8-jre-headless
+# Install node-canvas dependencies (for opensphere-plugin-geopackage / geopackage-js)
+RUN apt-get -y install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev librsvg2-dev pkg-config
 
 RUN mkdir /workspace \
   && mkdir /web-content
@@ -12,10 +13,6 @@ RUN cd /workspace/opensphere-yarn-workspace/workspace/ \
   && git clone https://github.com/ngageoint/opensphere.git
 RUN cd /workspace/opensphere-yarn-workspace/ \
   && yarn install --network-timeout 100000
-RUN wget https://download.java.net/openjdk/jdk11/ri/openjdk-11+28_linux-x64_bin.tar.gz \
-  && tar -xzf  openjdk-11+28_linux-x64_bin.tar.gz -C /opt/
-
-ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/jdk-11/bin
 
 COPY docker-entrypoint.sh /usr/local/bin/
 
